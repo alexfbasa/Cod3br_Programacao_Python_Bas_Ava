@@ -7,4 +7,4 @@ finally:
     arquivo.close()
 
 if arquivo.closed:
-    print('Arquivo já foi fechado!')
+    print('Ar   quivo já foi fechado!')

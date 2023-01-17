@@ -1,6 +1,6 @@
-from math import pi
-import sys
 import errno
+import sys
+from math import pi
 
 
 class TerminalColor:
