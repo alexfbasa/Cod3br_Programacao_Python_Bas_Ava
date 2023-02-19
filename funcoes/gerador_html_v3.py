@@ -1,6 +1,7 @@
-def tag_bloco(conteudo, classe='success', inline=False):
+def tag_bloco(conteudo, *args, classe='success', inline=False):
     tag = 'spam' if inline else 'div'
-    return f"<{tag} class='{classe}'>{conteudo}</{tag}>"
+    html = conteudo if not callable(conteudo) else conteudo(*args)
+    return f"<{tag} class='{classe}'>{html}</{tag}>"
 
 
 def tag_list(*itens):
@@ -8,9 +9,7 @@ def tag_list(*itens):
     return f"<ul>{lista}</ul>"
 
 
-
 if __name__ == '__main__':
-    testando_packing = tag_bloco(tag_list('Maradona', 'Xuxa', 'Pele'), inline=True)
-    print(testando_packing)
-
-print(tag_list('Alexandre', 'Marcio', 'Luiz'))
+    # tag_bloco + um callable tag_lista
+    print(tag_bloco(tag_list, 'Item01', 'Item02', classe='Info'))
+    print(tag_bloco(tag_list('Item01', 'Item02'), classe='Warn'))
